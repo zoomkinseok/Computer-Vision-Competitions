@@ -28,8 +28,8 @@ class Dataset():
 
 def dataload():
     script_dir = os.path.dirname(__file__)
-    train_dir = os.path.join(script_dir, 'train')
-    test_dir = os.path.join(script_dir, 'test1')
+    train_dir = os.path.join(script_dir, 'dataset/train')
+    test_dir = os.path.join(script_dir, 'dataset/test1')
 
     train_list = os.listdir(train_dir)  ## train data(.jpg) list
     test_list = os.listdir(test_dir)  ## test data(.jpg) list

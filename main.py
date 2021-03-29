@@ -31,7 +31,7 @@ def main():
     model.to(device)
 
     ## Parameter
-    epoch = 300
+    epoch = 1
     learning_rate = 10e-5
     optimizer = optim.Adam(model.parameters(), lr=learning_rate)
     scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=50, gamma=0.5)
@@ -103,12 +103,14 @@ def main():
 
     if save:
         dir = os.path.dirname(__file__)
-        model_dir = os.path.join(dir, model_name+'.pt')
+        fold_dir = os.path.join(dir, 'weight')
+        model_dir = os.path.join(fold_dir, model_name+'.pt')
         torch.save(model.state_dict(), model_dir)
 
     if plot:
         dir = os.path.dirname(__file__)
-        fold_dir = os.path.join(dir, model_name)
+        png_dif = os.path.join(dir,'png')
+        fold_dir = os.path.join(png_dif, model_name)
         os.makedirs(fold_dir)
         loss_curve_dir = os.path.join(fold_dir, 'Loss Curve.png')
         accuracy_curve_dir = os.path.join(fold_dir, 'Accuracy Curve.png')
